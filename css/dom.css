@@ -76,13 +76,22 @@ img{
     right: 0;
     width: 100%;
     background-color: var(--second-modal-color);
-    transition: transform .3s ease;
-    /*de arriba*/
-    transform:translate(0,-100%)
+    /*se pueden eliminar transiciones y manejarlo con opacidad*/
+    opacity:0;
+    /*transition: transform .3s ease, opacity 0.5s ease;*/
+    /*el menu se despliegue de arriba-abajo*/
+    /*transform:translate(0,-100%);*/
+    /*el menu se despliegue de abajo-arriba*/
+    /*transform:translate(0,100%);*/
+    /*el menu se despliegue de lado derecho*/
+    /*transform: translate(100%,0);*/
+    /*el menu se despliegue de lado izquierdo*/
+    /*transform: translate(-100%,0);*/
 }
 
 .panel.is-active{
-    transform:translate(0,0);
+    /*transform:translate(0,0);*/
+    opacity: 1;
 }
 
 .panel-btn{
