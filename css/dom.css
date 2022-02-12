@@ -1,0 +1,136 @@
+/*reseteo basico html */
+
+:root{
+    --main-font:sans-serif;
+    --font-size:16px;
+    --main-color:#84a59d;
+    --second-color:#222;
+    --main-modal-color:#f6bd60;
+    --second-modal-color:rgba(34,34,34,0.85);
+    --container-width:1200px;
+}
+
+html{
+    box-sizing: border-box;
+    font-family: var(--main-font); /*asigno los valores de las variables en root para que se asemejen */
+    font-size: var(--font-size);
+    scroll-behavior: smooth; /* es lo que hara el proceso de navegacion, asignando transicion ejemplo selecciono seccion 5, y 
+    hara transicion a donde se encuentra la seccion en la pagina*/
+}
+/*
+    **todos los elementos html heredaran box-sizing 
+*/
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit; 
+}
+
+/*reseteamos el margin original de 8px a 0 asi o que se desborde se oculte en la barra de desplazamiento */
+body{
+    margin:0;
+    overflow-x: hidden; 
+}
+
+/* en caso de haber imaganes se adaptaran a la max anchura del contenedor */
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos del menu hamburguesa */
+
+.header{
+    position: sticky; /*cuando el header llegue  la posicion 0 de top, se comportara como si estuviera fijo */
+    top:0;
+    padding: 1rem;
+    background-color: var(--main-color);
+    color:var(--second-color);
+}
+
+.header h1{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section{
+    padding: 2rem;
+    padding-top:4rem;
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%;
+    max-width: var(--container-width);
+    min-height: 100vh; /*cada seccion aunque su contenido sea mas pequeño se centra en el vh*/
+    text-align: center;  
+}
+
+/* botn hamburguesa */
+
+.panel{
+    position: fixed;
+    z-index: 998;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--second-modal-color);
+    /*se pueden eliminar transiciones y manejarlo con opacidad*/
+    opacity:0;
+    /*transition: transform .3s ease, opacity 0.5s ease;*/
+    /*el menu se despliegue de arriba-abajo*/
+    /*transform:translate(0,-100%);*/
+    /*el menu se despliegue de abajo-arriba*/
+    /*transform:translate(0,100%);*/
+    /*el menu se despliegue de lado derecho*/
+    /*transform: translate(100%,0);*/
+    /*el menu se despliegue de lado izquierdo*/
+    /*transform: translate(-100%,0);*/
+}
+
+.panel.is-active{
+    /*transform:translate(0,0);*/
+    opacity: 1;
+}
+
+.panel-btn{
+    position: fixed; /*posicionado de manera fija a 1vh(bottom)*/
+    z-index: 999;/*jugamos con la profundidad de la propiedad, esto evitara que cualquier elemento despues del boton aparezca encima del boton*/
+    bottom: 1vh;
+    right: 1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: var(--main-color);
+}
+
+/*nav menu*/
+.menu{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.menu a{ 
+    padding: 2rem;
+    width: inherit;
+    display: block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color:var(--main-color);
+    transition: all 0.3s ease;
+}
+
+.menu a:hover{
+    font-weight: bold;
+    color:var(--second-color);
+    background-color: var(--main-modal-color);
+}
